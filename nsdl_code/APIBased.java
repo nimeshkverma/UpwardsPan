@@ -77,10 +77,19 @@ public class APIBased {
 
 		Properties prop = new Properties();
 	    try {
-	        prop.load(new FileInputStream("params.properties"));
-
-	        data=prop.getProperty("data");
-	        signature=prop.getProperty("signature");
+	        // prop.load(new FileInputStream("params.properties"));
+	        // data=prop.getProperty("data");
+	        // signature=prop.getProperty("signature");
+		       data=args[0];    //"V0139201^AMXPP6546K";
+		       BufferedReader br = null;
+		       String file_name="";
+		       file_name="deliverable/"+args[1];		//"deliverable/out.sig"
+		       br = new BufferedReader(new FileReader(file_name));
+		       String line;  
+		       while ((line = br.readLine()) != null) {
+		       	signature+=line;
+		       }
+		       br.close();
 
 
 	    } catch (Exception e) {
